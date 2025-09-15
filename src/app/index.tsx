@@ -5,6 +5,7 @@ import CustomButton from '../Components/CustomButton';
 import { auth } from '../Context/firebase';
 import { FONT } from '../Context/theme';
 import { useTheme } from '../Context/ThemeContext';
+import {router, useRouter} from 'expo-router'
 
 export default function Index() {
   const { theme } = useTheme();
@@ -70,13 +71,7 @@ export default function Index() {
       const verificationId = await phoneProvider.verifyPhoneNumber(
         phone
       );
-      // Use a navigation prop or hook (e.g., useNavigation from @react-navigation/native)
-      // Example:
-      // import { useNavigation } from '@react-navigation/native';
-      // const navigation = useNavigation();
-      // navigation.navigate('PinVerification', { verificationId, phone });
-      // For now, comment out navigation to avoid error
-      // navigation.navigate('PinVerification', { verificationId, phone });
+      router.replace('/(tabs)');
     } catch (err) {
       if (err instanceof Error) {
         alert(err.message);
